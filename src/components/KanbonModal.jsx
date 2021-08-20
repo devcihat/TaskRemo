@@ -1,9 +1,11 @@
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { DotsVerticalIcon } from "@heroicons/react/solid";
+
 import { FaAngleDown } from "react-icons/fa";
 import ModalDetail from "./ModalDetail";
+import Files from "./Files";
+import Subtask from "./Subtask";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -58,27 +60,24 @@ const KanbanModal = (props) => {
                       <div className="ml-3 h-7 flex items-center">
                         <button
                           type="button"
-                          className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
+                          className=" rounded-md text-gray-400 "
                           onClick={() => props.hide(false)}
                         >
                           <span className="sr-only">Close panel</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
                         </button>
-                     
                       </div>
-                     
                     </div>
                   </div>
                   {/* Main */}
-                 
+
                   <div>
-                  <ModalDetail />
+                    <ModalDetail />
                     <div className="pb-1 sm:pb-6">
                       <div>
-                        
                         <div className="mt-6 px-4 sm:mt-8 sm:flex sm:items-end  sm:px-6">
                           <div className="sm:flex-1">
-                            <div>
+                            {/* <div>
                               <div className="flex items-center">
                                 <h3 className="font-bold text-xl text-gray-900 sm:text-2xl">
                                   Ashley Porter
@@ -90,8 +89,9 @@ const KanbanModal = (props) => {
                               <p className="text-sm text-gray-500">
                                 @ashleyporter
                               </p>
-                            </div>
-                            <div className="mt-5 flex flex-wrap space-y-3 sm:space-y-0 sm:space-x-3">
+                            </div> */}
+                            <Files />
+                            {/* <div className="mt-5 flex flex-wrap space-y-3 sm:space-y-0 sm:space-x-3">
                               <button
                                 type="button"
                                 className="flex-shrink-0 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:flex-1"
@@ -164,7 +164,8 @@ const KanbanModal = (props) => {
                                   </Transition>
                                 </Menu>
                               </span>
-                            </div>
+                            </div> */}
+                            <Subtask />
                           </div>
                         </div>
                       </div>

@@ -9,7 +9,6 @@ import {
 import KanbanModal from "../components/KanbonModal";
 
 function Card() {
-  
   const [open, setOpen] = useState(false);
   const openModal = () => {
     setOpen(true);
@@ -17,18 +16,23 @@ function Card() {
   return (
     <>
       <div>
-         {open ? (
-              <KanbanModal  hide={() => setOpen(false)} open={open} closeModal={openModal} />
-         ) : ''}
+        {open ? (
+          <KanbanModal
+            hide={() => setOpen(false)}
+            open={open}
+            closeModal={openModal}
+          />
+        ) : (
+          ""
+        )}
         <button
-          onClick={openModal} 
+          onClick={openModal}
           style={{ marginLeft: "1200px", marginTop: "20px" }}
           type="button"
           class="inline-flex items-center px-3 py-2  text-sm leading-4 font-medium rounded-md text-white bg-gradient-to-r from-purple-400 via-pink-500 to-pink-500"
         >
           New Task
         </button>
-        
       </div>
       <div class="py-12">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
