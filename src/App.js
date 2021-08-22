@@ -1,10 +1,13 @@
 import Card from "./components/Card";
+import { DataProvider } from "./components/DataProvider";
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: "#111111" }} className="">
-      <Card />
-    </div>
+    <DataProvider>
+      <div style={{ backgroundColor: "#111111" }} className="">
+        <Card />
+      </div>
+    </DataProvider>
   );
 };
 

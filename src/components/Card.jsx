@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import {
   FaBoxOpen,
@@ -7,9 +7,13 @@ import {
   FaAngleDown,
 } from "react-icons/fa";
 import KanbanModal from "../components/KanbonModal";
+import { DataContext } from "./DataProvider";
+import ListItem from "./ListItem"
 
 function Card() {
-  
+  const [todos, setTodos] = useContext(DataContext);
+  console.log(todos);
+
   const [open, setOpen] = useState(false);
   const openModal = () => {
     setOpen(true);
@@ -17,18 +21,23 @@ function Card() {
   return (
     <>
       <div>
-         {open ? (
-              <KanbanModal  hide={() => setOpen(false)} open={open} closeModal={openModal} />
-         ) : ''}
+        {open ? (
+          <KanbanModal
+            hide={() => setOpen(false)}
+            open={open}
+            closeModal={openModal}
+          />
+        ) : (
+          ""
+        )}
         <button
-          onClick={openModal} 
+          onClick={openModal}
           style={{ marginLeft: "1200px", marginTop: "20px" }}
           type="button"
           class="inline-flex items-center px-3 py-2  text-sm leading-4 font-medium rounded-md text-white bg-gradient-to-r from-purple-400 via-pink-500 to-pink-500"
         >
           New Task
         </button>
-        
       </div>
       <div class="py-12">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -49,24 +58,11 @@ function Card() {
                     borderRadius: "8px",
                     listStyleType: "none",
                   }}
-                  class="col-span-1   divide-y divide-gray-200"
+                  class="col-span-1  divide-y "
                 >
-                  <div class="w-full mt-4 flex items-center justify-between p-6 space-x-6">
-                    <div class="flex-1 truncate">
-                      <div class="flex items-center space-x-2">
-                        <h3
-                          style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                          class=" text-md font-medium truncate"
-                        >
-                          <FaBoxOpen />
-                        </h3>
-                        <h3 class="text-white text-sm font-medium truncate">
-                          Get things done
-                        </h3>
-                      </div>
-                    </div>
-                    <FaPencilAlt color="rgba(255, 255, 255, 0.5)" />
-                  </div>
+                  {todos.map((todo,index) => (
+                      <ListItem todo={todo} key={index} id={index} />
+                  ))}
                   <div>
                     <div class="flex ">
                       <div class="w-0 flex-1 flex">

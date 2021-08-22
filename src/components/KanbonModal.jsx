@@ -1,17 +1,17 @@
-import { Fragment } from "react";
+import React,{ Fragment,useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-
 import { FaAngleDown } from "react-icons/fa";
 import ModalDetail from "./ModalDetail";
 import Files from "./Files";
 import Subtask from "./Subtask";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+
 
 const KanbanModal = (props) => {
+
+
+
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
