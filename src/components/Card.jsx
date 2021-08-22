@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import KanbanModal from "../components/KanbonModal";
 import { DataContext } from "./DataProvider";
-import ListItem from "./ListItem"
+import ListItem from "./ListItem";
 
 function Card() {
   const [todos, setTodos] = useContext(DataContext);
@@ -51,7 +51,9 @@ function Card() {
                 >
                   <FaAngleDown color="#FFFFFF" size={18} className="mx-1" />
                   To do
+                  <p className="mx-2">{todos.length}</p>
                 </button>
+
                 <li
                   style={{
                     background: "rgba(255, 255, 255, 0.15)",
@@ -60,8 +62,8 @@ function Card() {
                   }}
                   class="col-span-1  divide-y "
                 >
-                  {todos.map((todo,index) => (
-                      <ListItem todo={todo} key={index} id={index} />
+                  {todos.map((todo, index) => (
+                    <ListItem todo={todo} key={index} id={index} />
                   ))}
                   <div>
                     <div class="flex ">
