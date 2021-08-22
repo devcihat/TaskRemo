@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import {
   FaBoxOpen,
@@ -17,6 +18,10 @@ function Card() {
   const [open, setOpen] = useState(false);
   const openModal = () => {
     setOpen(true);
+  };
+
+  const onDragEnd = (result) => {
+    console.log(result);
   };
   return (
     <>
@@ -62,9 +67,41 @@ function Card() {
                   }}
                   class="col-span-1  divide-y "
                 >
-                  {todos.map((todo, index) => (
-                    <ListItem todo={todo} key={index} id={index} />
-                  ))}
+                  <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId={todos.id}>
+                      {(provided, snapshot) => (
+                        <div
+                          class="col-span-1 divide-y "
+                          ref={provided.innerRef}
+                        >
+                          {todos.map((todo, index,id) => (
+                            <Draggable
+                              draggableId={id.toString()}
+                              key={id.toString()}
+                              index={index.toString()}
+                            >
+                              {(provided, snapshot) => (
+                                <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                >
+                                  <div>
+                                    <ListItem
+                                      todo={todo}
+                                      key={index}
+                                      id={index}
+                                    />
+                                  </div>
+                                </div>
+                              )}
+                            </Draggable>
+                          ))}
+                          {provided.placeholder}
+                        </div>
+                      )}
+                    </Droppable>
+                  </DragDropContext>
                   <div>
                     <div class="flex ">
                       <div class="w-0 flex-1 flex">
