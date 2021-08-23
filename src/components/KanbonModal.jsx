@@ -42,7 +42,7 @@ const KanbanModal = (props) => {
                       <button
                         style={{ border: "2px solid rgba(255, 255, 255, 0.5)" }}
                         type="button"
-                        class="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  "
+                        className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  "
                       >
                         <FaAngleDown
                           color="#FFFFFF80"

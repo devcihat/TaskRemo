@@ -24,7 +24,7 @@ export default function ModalDetail() {
               <input
                 onChange={(e) => setTodoAssignee(e.target.value)}
                 value={todoAssignee}
-                class="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -32,7 +32,7 @@ export default function ModalDetail() {
               <input
                 onChange={(e) => setTodoDueDate(e.target.value)}
                 value={todoDueDate}
-                class="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -40,25 +40,25 @@ export default function ModalDetail() {
               <input
                 onChange={(e) => setTodoPriority(e.target.value)}
                 value={todoPriority}
-                class="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
             {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-white">Assignee</dt>
-            <input class="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+            <input className="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
           </div> */}
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-white">Description</dt>
               <input
                 onChange={(e) => setTodoDescription(e.target.value)}
                 value={todoDescription}
-                class="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2  text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
             <div>
               <button
                 type="submit"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 Submit
               </button>

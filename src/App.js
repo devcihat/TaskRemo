@@ -8,9 +8,7 @@ function App() {
   return (
     <DataProvider>
       <div style={{ backgroundColor: "#111111" }}>
-        
-          <Card />
-        
+        <Card />
       </div>
     </DataProvider>
   );

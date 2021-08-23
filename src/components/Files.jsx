@@ -11,10 +11,10 @@ function Files() {
             border: "2px dashed #FFFFFF80",
             listStyleType: "none",
           }}
-          class="col-span-1 border-dashed mx-4   divide-y "
+          className="col-span-1 border-dashed mx-4   divide-y "
         >
           <div>
-            <div class="  p-10  ">
+            <div className="  p-10  ">
               <a href="#" style={{ color: "#FFFFFF80" }}>
                 + 
               </a>
@@ -27,10 +27,10 @@ function Files() {
             listStyleType: "none",
             background:'white'
           }}
-          class="col-span-1 border-dashed   divide-y "
+          className="col-span-1 border-dashed   divide-y "
         >
           <div>
-            <div class="  p-10  ">
+            <div className="  p-10  ">
               <a href="#" style={{ color: "#FFFFFF" }}>
                 + 
               </a>

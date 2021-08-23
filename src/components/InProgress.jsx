@@ -6,15 +6,13 @@ import {
 
 const InProgress =() => {
 
-    const [complated,setComplated] = useState()
-
     return (
         <div>
         <dt className="mb-4">
           <button
             style={{ border: "2px solid #B99539" }}
             type="button"
-            class="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white  "
+            className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white  "
           >
             <FaAngleDown color="#E5E5E5" size={18} className="mx-1" />
             In progress
@@ -26,25 +24,25 @@ const InProgress =() => {
             listStyleType: "none",
             borderRadius: "8px",
           }}
-          class="col-span-1   divide-y divide-gray-200"
+          className="col-span-1   divide-y divide-gray-200"
         >
-          <div class="w-full flex items-center justify-between p-6 space-x-6">
-            <div class="flex-1 truncate">
-              <div class="flex items-center space-x-2">
+          <div className="w-full flex items-center justify-between p-6 space-x-6">
+            <div className="flex-1 truncate">
+              <div className="flex items-center space-x-2">
                 <h3
                   style={{ color: "#B99539" }}
-                  class=" text-md font-medium truncate"
+                  className=" text-md font-medium truncate"
                 >
                   <FaBoxOpen />
                 </h3>
-                <h3 class="text-white text-sm font-medium truncate">
+                <h3 className="text-white text-sm font-medium truncate">
                   Finish the assignments
                 </h3>
               </div>
             </div>
           </div>
           <div>
-            <div class="w-0 flex-1 flex">
+            <div className="w-0 flex-1 flex">
               <div className="flex">
                 <FaBoxOpen
                   color="#FFFFFF80"
