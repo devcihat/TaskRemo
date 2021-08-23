@@ -10,7 +10,7 @@ export default function ModalDetail() {
 
   const addTodo = (e) => {
     e.preventDefault();
-    setTodos([...todos, { name: todoDescription, complate: false }]);
+    setTodos([...todos, { name: todoDescription, id:todos, complate: false }]);
   };
 
   return (
