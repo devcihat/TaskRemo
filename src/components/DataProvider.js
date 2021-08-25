@@ -6,9 +6,13 @@ export const DataProvider = (props) => {
   const [todos, setTodos] = useState([]);
   const [inProgress,setInProgress] = useState([])
 
+  
+ 
+
   const val = {
     _inProgress:[inProgress,setInProgress],
-    todo:[todos, setTodos]
+    todo:[todos, setTodos],
+    
   }
 
   return (

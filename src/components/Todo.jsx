@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaAlignJustify, FaAngleDown } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { DataContext } from "./DataProvider";
@@ -7,9 +7,26 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 export const Todo = () => {
   const { todo } = useContext(DataContext);
   const [todos, setTodos] = todo;
-  const { _inProgress } = useContext(DataContext);
-  const [inProgress, setInProgress] = _inProgress;
-  const [list, setList] = useState(todo);
+
+  const handleDrag = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    const sInd = source.droppableId;
+    const dInd = destination.droppableId;
+    console.log(sInd, dInd);
+    if (sInd == dInd) {
+      console.log(sInd);
+      console.log(dInd);
+      const items = Array.from(todos);
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      console.log("reorder", result.source.index);
+      items.splice(result.destination.index, 0, reorderedItem);
+
+      setTodos(items);
+    }
+  };
 
   // const [dragging, setDragging] = useState(false);
   // const dragItem = useRef();
@@ -53,39 +70,9 @@ export const Todo = () => {
   //   dragNode.current = null;
   // };
 
-  // const getStyles = (params) => {
-  //   const currentItem = dragItem.current;
-  //   if (
-  //     currentItem.todo === params.todo &&
-  //     currentItem.index === params.index
-  //   ) {
-  //     return "current bg-red-700";
-  //   }
-  //   return "bg-indigo-800";
-  // };
-
-  const dragEnd = (result) => {
-    // console.log(result)
-    const { source, destination } = result;
-    if (!destination) {
-      return;
-    }
-    const sInd = source.droppableId;
-    const dInd = destination.droppableId;
-    console.log(sInd, dInd);
-    if (sInd == dInd) {
-      console.log(todos);
-      const items = Array.from(todos);
-      const [reorderedItem] = items.splice(result.source.index, 1);
-      console.log("reorder", result.source.index);
-      items.splice(result.destination.index, 0, reorderedItem);
-
-      setTodos(items);
-    }
-  };
   useEffect(() => {}, [todos]);
   return (
-    <DragDropContext onDragEnd={dragEnd}>
+    <DragDropContext onDragEnd={handleDrag}>
       <Droppable droppableId="list">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>

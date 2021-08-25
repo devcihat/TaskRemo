@@ -2,10 +2,13 @@ import React, { useContext } from "react";
 import { FaBoxOpen, FaAngleDown } from "react-icons/fa";
 import { DataContext } from "./DataProvider";
 import ListProgress from "./ListProgress";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const InProgress = () => {
-  const {_inProgress} = useContext(DataContext);
-  const [inProgress,setInProgress] = _inProgress
+  const { _inProgress } = useContext(DataContext);
+  const [inProgress, setInProgress] = _inProgress;
+
+  
   return (
     <div>
       <dt className="mb-4">
@@ -27,11 +30,13 @@ const InProgress = () => {
         className="col-span-1   divide-y divide-gray-200"
       >
         <div className="w-full flex items-center justify-between p-6 space-x-6">
-          {inProgress.length > 0 ? inProgress.map((progress, index) => (
-            <div key={index}>
-              <ListProgress progress={progress} key={index} />
-            </div>
-          )) : ""}
+          {inProgress.length > 0
+            ? inProgress.map((progress, index) => (
+                <div key={index}>
+                  <ListProgress progress={progress} key={index} />
+                </div>
+              ))
+            : ""}
         </div>
         <div>
           <div className="w-0 flex-1 flex">
