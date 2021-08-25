@@ -1,16 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
-import {
-  FaBoxOpen,
-  FaPencilAlt,
-  FaAlignJustify,
-  FaAngleDown,
-} from "react-icons/fa";
+import { FaAlignJustify, FaAngleDown } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { DataContext } from "./DataProvider";
-import { Droppable } from "react-beautiful-dnd";
 
 export const Todo = () => {
-  const [todos, setTodos] = useContext(DataContext);
+  const { todo } = useContext(DataContext);
+  const [todos, setTodos] = todo;
+  const { _inProgress } = useContext(DataContext);
+  const [inProgress, setInProgress] = _inProgress;
   const [dragging, setDragging] = useState(false);
   const dragItem = useRef();
   const dragNode = useRef();
@@ -27,14 +24,18 @@ export const Todo = () => {
   };
 
   const handleDragEnter = (e, params) => {
+    console.log('sadd',params)
     console.log("entering draging", params);
     const currentItem = dragItem.current;
     if (e.target !== dragNode.current) {
       console.log("eşit değil");
-      setTodos(oldList => {
+      setTodos((oldList) => {
         let newList = JSON.parse(JSON.stringify(oldList));
-
-        
+        newList[params.index].inProgress.splice(
+          params.todo,
+          0,
+          newList[currentItem.index].inProgress.splice(currentItem.todo, 1)[0]
+        );
         dragItem.current = params;
         return newList;
       });

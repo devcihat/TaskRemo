@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
+import React from "react";
 
 import Card from "./components/Card";
 import { DataProvider } from "./components/DataProvider";

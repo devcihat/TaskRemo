@@ -1,6 +1,6 @@
 import React from "react";
 import { FaAngleDown } from "react-icons/fa";
-import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
+import { SpeakerphoneIcon } from "@heroicons/react/outline";
 
 function Subtask() {
   return (

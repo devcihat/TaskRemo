@@ -9,7 +9,7 @@ import Todo from "./Todo";
 
 function Card() {
   const [open, setOpen] = useState(false);
-  const [todos, setTodos] = useContext(DataContext);
+  // const [todos, setTodos] = useContext(DataContext);
   const openModal = () => {
     setOpen(true);
   };

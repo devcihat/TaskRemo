@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "./DataProvider";
 
 export default function ModalDetail() {
-  const [todos, setTodos] = useContext(DataContext);
+  const { todo } = useContext(DataContext);
+  const [todos, setTodos] = todo;
   const [todoAssignee, setTodoAssignee] = useState("");
   const [todoDueDate, setTodoDueDate] = useState("");
   const [todoPriority, setTodoPriority] = useState("");
@@ -10,7 +11,7 @@ export default function ModalDetail() {
 
   const addTodo = (e) => {
     e.preventDefault();
-    setTodos([...todos, { name: todoDescription, id:todos, complate: false }]);
+    setTodos([...todos, { name: todoDescription, id: todos, complate: false }]);
   };
 
   return (
