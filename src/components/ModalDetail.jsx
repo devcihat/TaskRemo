@@ -11,7 +11,13 @@ export default function ModalDetail() {
 
   const addTodo = (e) => {
     e.preventDefault();
-    setTodos([...todos, { name: todoDescription, id: todos, complate: false }]);
+
+    function generateRandomInteger(max) {
+      return Math.floor(Math.random() * max) + 1;
+    }
+
+    let _id = generateRandomInteger(10);
+    setTodos([...todos, { name: todoDescription, id: _id.toString(), complate: false }]);
   };
 
   return (

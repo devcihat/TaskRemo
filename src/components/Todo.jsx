@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { FaAlignJustify, FaAngleDown } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { DataContext } from "./DataProvider";
@@ -9,6 +9,7 @@ export const Todo = () => {
   const [todos, setTodos] = todo;
   const { _inProgress } = useContext(DataContext);
   const [inProgress, setInProgress] = _inProgress;
+  const [list, setList] = useState(todo);
 
   // const [dragging, setDragging] = useState(false);
   // const dragItem = useRef();
@@ -64,20 +65,30 @@ export const Todo = () => {
   // };
 
   const dragEnd = (result) => {
-    console.log(result);
-    const todoItem = [...todo];
-
-    const [orderedItems] = todoItem.splice(result.source.index, 1);
-    console.log("sour", result.source.index);
-    todoItem.splice(result.destination.index, 0, orderedItems);
-    console.log("dest", result.destination.index);
-
-    setTodos(todoItem);
+    // console.log(result)
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    const sInd = source.droppableId;
+    const dInd = destination.droppableId;
+    console.log(sInd,dInd)
+    if(sInd == dInd){
+      console.log(todos)
+      const items = Array.from(todos);
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      console.log('reorder',result.source.index)
+      items.splice(result.destination.index, 0, reorderedItem);
+     
+      setTodos(items);
+    }
   };
-
+  useEffect(() => {
+    
+  }, [todos]);
   return (
     <DragDropContext onDragEnd={dragEnd}>
-      <Droppable droppableId="TodoLists">
+      <Droppable droppableId="list">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             <dt>
@@ -91,7 +102,7 @@ export const Todo = () => {
                 <p className="mx-2">{todos.length}</p>
               </div>
 
-              <li
+              <div
                 style={{
                   background: "rgba(255, 255, 255, 0.15)",
                   borderRadius: "8px",
@@ -100,24 +111,27 @@ export const Todo = () => {
                 className="col-span-1  divide-y "
               >
                 <div className="col-span-1  divide-y">
-                  {todos.map((todo, index) => (
-                    <Draggable
-                      draggableId={`draggable-${index}`}
-                      key={`draggable-${index}`}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          ref={provided.innerRef}
-                        >
-                          <ListItem todo={todo} key={index} />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {/* {provided.placeholder} */}
+                  {todos.map((todo, index) => {
+                    return (
+                      <Draggable
+                        draggableId={todo.id}
+                        key={todo.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            ref={provided.innerRef}
+                          >
+                            <ListItem todo={todo} key={index} />
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                  
                 </div>
 
                 <div>
@@ -166,7 +180,7 @@ export const Todo = () => {
                     </div>
                   </div>
                 </div>
-              </li>
+              </div>
               <div className="mx-auto text-center pt-2 items-center">
                 <p style={{ color: "#FFFFFF80" }} className=" block">
                   + Add
