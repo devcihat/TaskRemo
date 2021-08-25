@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaAlignJustify, FaAngleDown } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { DataContext } from "./DataProvider";
@@ -72,20 +72,18 @@ export const Todo = () => {
     }
     const sInd = source.droppableId;
     const dInd = destination.droppableId;
-    console.log(sInd,dInd)
-    if(sInd == dInd){
-      console.log(todos)
+    console.log(sInd, dInd);
+    if (sInd == dInd) {
+      console.log(todos);
       const items = Array.from(todos);
       const [reorderedItem] = items.splice(result.source.index, 1);
-      console.log('reorder',result.source.index)
+      console.log("reorder", result.source.index);
       items.splice(result.destination.index, 0, reorderedItem);
-     
+
       setTodos(items);
     }
   };
-  useEffect(() => {
-    
-  }, [todos]);
+  useEffect(() => {}, [todos]);
   return (
     <DragDropContext onDragEnd={dragEnd}>
       <Droppable droppableId="list">
@@ -95,22 +93,15 @@ export const Todo = () => {
               <div
                 style={{ border: "2px solid rgba(255, 255, 255, 0.5)" }}
                 type="button"
-                className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white  "
+                className="inline-flex mb-3  items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white  "
               >
                 <FaAngleDown color="#FFFFFF" size={18} className="mx-1" />
                 To do
                 <p className="mx-2">{todos.length}</p>
               </div>
 
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.15)",
-                  borderRadius: "8px",
-                  listStyleType: "none",
-                }}
-                className="col-span-1  divide-y "
-              >
-                <div className="col-span-1  divide-y">
+              <div className="">
+                <div class="grid  gap-4">
                   {todos.map((todo, index) => {
                     return (
                       <Draggable
@@ -119,24 +110,26 @@ export const Todo = () => {
                         index={index}
                       >
                         {(provided) => (
-                          <div
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            ref={provided.innerRef}
-                          >
-                            <ListItem todo={todo} key={index} />
-                            {provided.placeholder}
-                          </div>
+                          <>
+                            <div
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              class="relative rounded-lg border border-gray-300 px-3 py-2 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                            >
+                              <ListItem todo={todo} key={index} />
+                              {provided.placeholder}
+                            </div>
+                          </>
                         )}
                       </Draggable>
                     );
                   })}
-                  
                 </div>
 
                 <div>
-                  <div className="flex ">
-                    <div className="w-0 flex-1 flex">
+                  <div className="flex">
+                    <div className="flex-1 flex">
                       <div className="flex mx-2 -space-x-1 justify-center  relative z-0 items-center">
                         <img
                           className="relative z-30 inline-block h-4 w-4 rounded-full ring-2 ring-white"
